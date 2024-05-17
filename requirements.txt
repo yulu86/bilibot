@@ -1,3 +1,4 @@
 mlx
 mlx-lm
 simpleaudio
+ollama
