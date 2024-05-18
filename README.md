@@ -36,6 +36,8 @@ python3 -m mlx_lm.lora --model models/Qwen1.5-1.8B --data data/ --train --iters 
 
 ```
 python3 -m mlx_lm.fuse --model models/Qwen1.5-32B-Chat --save-path models/Qwen1.5-32B-Chat-FT --adapter-path models/Qwen1.5-32B-Chat-Adapters
+
+python3 -m mlx_lm.fuse --model models/Qwen1.5-1.8B --save-path models/Qwen1.5-1.8B-FT --adapter-path adapters/Qwen1.5-1.8B-Adapters
 ```
 
 对合并后的模型进行量化加速：

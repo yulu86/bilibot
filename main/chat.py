@@ -6,7 +6,7 @@ from mlx_lm import load, generate
 # with open('../models/Qwen1.5-32B-Chat/tokenizer_config.json', 'r') as file:
 #     tokenizer_config = json.load(file)
 
-with open('../models/Qwen1.5-32B-Chat-FT-4Bit/tokenizer_config.json', 'r') as file:
+with open('../models/Qwen1.5-1.8B-FT-4Bit/tokenizer_config.json', 'r') as file:
     tokenizer_config = json.load(file)
 
 # model, tokenizer = load(
@@ -15,7 +15,7 @@ with open('../models/Qwen1.5-32B-Chat-FT-4Bit/tokenizer_config.json', 'r') as fi
 # )
 
 model, tokenizer = load(
-    "../models/Qwen1.5-32B-Chat-FT-4Bit/",
+    "../models/Qwen1.5-1.8B-FT-4Bit/",
     tokenizer_config=tokenizer_config
 )
 
