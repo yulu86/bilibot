@@ -3,7 +3,7 @@ import re
 import json
 import time
 import wave
-# import requests
+import requests
 import simpleaudio as sa
 import ollama
 
@@ -11,20 +11,20 @@ import ollama
 
 def generate_speech(text, port):
     time_ckpt = time.time()
-    # data={
-    #     "text": text,
-    #     "text_language": "zh"
-    # }
-    # response = requests.post("http://127.0.0.1:{}".format(port), json=data)
-    # if response.status_code == 400:
-    #     raise Exception(f"GPT-SoVITS ERROR: {response.message}")
-    # audio_data = io.BytesIO(response.content)
-    # with wave.open(audio_data, 'rb') as wave_read:
-    #     audio_frames = wave_read.readframes(wave_read.getnframes())
-    #     audio_wave_obj = sa.WaveObject(audio_frames, wave_read.getnchannels(), wave_read.getsampwidth(), wave_read.getframerate())
-    # play_obj = audio_wave_obj.play()
-    # play_obj.wait_done()
-    # print("Audio Generation Time: %d ms\n" % ((time.time() - time_ckpt) * 1000))
+    data={
+        "text": text,
+        "text_language": "zh"
+    }
+    response = requests.post("http://127.0.0.1:{}".format(port), json=data)
+    if response.status_code == 400:
+        raise Exception(f"GPT-SoVITS ERROR: {response.message}")
+    audio_data = io.BytesIO(response.content)
+    with wave.open(audio_data, 'rb') as wave_read:
+        audio_frames = wave_read.readframes(wave_read.getnframes())
+        audio_wave_obj = sa.WaveObject(audio_frames, wave_read.getnchannels(), wave_read.getsampwidth(), wave_read.getframerate())
+    play_obj = audio_wave_obj.play()
+    play_obj.wait_done()
+    print("Audio Generation Time: %d ms\n" % ((time.time() - time_ckpt) * 1000))
 
 def split_text(text):
     sentence_endings = ['！', '。', '？']
@@ -35,7 +35,7 @@ def split_text(text):
     return text
 
 def generate_by_ollama(question):
-    response = ollama.chat(model='qwen:14b-chat-v1.5-q6_K', messages=[
+    response = ollama.chat(model='yi:34b-chat-q6_K', messages=[
       {
         'role': 'user',
         'content': question,

@@ -57,9 +57,9 @@ python3 webui.py
 
 运行 api 程序，分别使用端口 9880 与 9881 提供派蒙与林亦的语音生成服务，以下请使用 GPT-SoVITS 代码库完成：
 ```
-python3 api.py -s SoVITS_weights/XiaoNingZi_v1_e15_s225.pth -g GPT_weights/XiaoNingZi_v1-e15.ckpt -dr samples/XiaoNingZi/content2.wav -dt "要感谢一键三连的小伙伴们，也要感谢陪我，从几百粉走到现在的老朋友们，谢谢你们。" -dl "zh" -a 127.0.0.1 -p 9880
+python3 api.py -s SoVITS_weights/XiaoNingZi_v1_e15_s225.pth -g GPT_weights/XiaoNingZi_v1-e15.ckpt -dr samples/XiaoNingZi/content2.wav -dt "要感谢一键三连的小伙伴们，也要感谢陪我，从几百粉走到现在的老朋友们，谢谢你们。" -dl "zh" -a 127.0.0.1 -p 9881
 
-python3 api.py -s SoVITS_weights/XiaoNingZi_v1_e15_s225.pth -g GPT_weights/XiaoNingZi_v1-e15.ckpt -dr samples/XiaoNingZi/content.wav -dt "好，视频的最后祝大家新年快乐，龙年走大运" -dl "zh" -a 127.0.0.1 -p 9881
+python3 api.py -s SoVITS_weights/XiaoNingZi_v1_e15_s225.pth -g GPT_weights/XiaoNingZi_v1-e15.ckpt -dr samples/XiaoNingZi/content.wav -dt "好，视频的最后祝大家新年快乐，龙年走大运" -dl "zh" -a 127.0.0.1 -p 9880
 ```
 
 运行问答生成程序：
