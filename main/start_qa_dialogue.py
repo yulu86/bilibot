@@ -7,7 +7,14 @@ import requests
 import simpleaudio as sa
 import ollama
 
-# from mlx_lm import load, generate
+from mlx_lm import load, generate
+
+# 是否使用OLLMA
+USE_OLLAMA = True
+# OLLMA模型
+OLLMA_MODEL = 'qwen:32b-chat-v1.5-q4_0_bilibot'
+# safetensors模型
+SAFETENSORS_MODEL = 'Qwen1.5-32B-Chat-4Bit'
 
 def generate_speech(text, port):
     time_ckpt = time.time()
@@ -35,23 +42,25 @@ def split_text(text):
     return text
 
 def generate_by_ollama(question):
-    response = ollama.chat(model='yi:34b-chat-q6_K', messages=[
-      {
-        'role': 'user',
-        'content': question,
-      },
-    ],
-    stream=False)    
+    response = ollama.chat(model=OLLMA_MODEL, messages=[
+          {
+            'role': 'user',
+            'content': question,
+          },
+        ],
+        stream=False
+    )    
     return response['message']['content']
 
 if __name__ == "__main__":
-    # with open('../models/Qwen1.5-32B-Chat-FT-4Bit/tokenizer_config.json', 'r') as file:
-    #     tokenizer_config = json.load(file)
-
-    # model, tokenizer = load(
-    #     "../models/Qwen1.5-32B-Chat-FT-4Bit/",
-    #     tokenizer_config=tokenizer_config
-    # )
+    if not USE_OLLAMA:
+        with open('../models/' + SAFETENSORS_MODEL + '/tokenizer_config.json', 'r') as file:
+            tokenizer_config = json.load(file)
+        
+        model, tokenizer = load(
+            "../models/" + SAFETENSORS_MODEL + "/",
+            tokenizer_config=tokenizer_config
+        )
 
     questions = []
     with open('../text/questions.txt', 'r', encoding='utf-8') as file:
@@ -62,26 +71,31 @@ if __name__ == "__main__":
 
     sys_msg = 'You are a helpful assistant'
 
-    # with open('../text/chat_template.txt', 'r') as template_file:
-    #     template = template_file.read()
+    template = ''
+    if not USE_OLLAMA:
+        with open('../text/chat_template.txt', 'r') as template_file:
+            template = template_file.read()
 
     for question in questions:
-        # prompt = template.replace("{usr_msg}", question)
+        prompt = template.replace("{usr_msg}", question)
         print("%s: %s" % ("问题", question))
         question = split_text(question)
         generate_speech(question, 9880)
         
-        time_ckpt = time.time()
-        # response = generate(
-        #     model,
-        #     tokenizer,
-        #     prompt=prompt,
-        #     temp=0.3,
-        #     max_tokens=500,
-        #     verbose=False
-        # )
 
-        response = generate_by_ollama(question)
+        time_ckpt = time.time()
+        if USE_OLLAMA:
+            response = generate_by_ollama(question)            
+        else:            
+            response = generate(
+                model,
+                tokenizer,
+                prompt=prompt,
+                temp=0.3,
+                max_tokens=500,
+                verbose=False
+            )
+    
 
         print("%s: %s (Time %d ms)\n" % ("哔友", response, (time.time() - time_ckpt) * 1000))
         response = split_text(response)
