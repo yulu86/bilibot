@@ -154,3 +154,4 @@ cython_debug/
 .DS_Store
 models/*
 text/chat_template_*
+adapters/*
