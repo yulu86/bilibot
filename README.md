@@ -27,7 +27,9 @@ python3 -m pip install -r requirements.txt
 使用控制台指令，借助 [mlx-lm](https://github.com/ml-explore/mlx-examples/blob/main/llms/mlx_lm/LORA.md) 对 Qwen1.5-32B-Chat 进行微调：
 
 ```
-python3 -m mlx_lm.lora --model Qwen/Qwen1.5-32B-Chat --data data/ --train --iters 1000 --batch-size 16 --lora-layers 12
+python3 -m mlx_lm.lora --model models/Qwen1.5-32B-Chat --data data/ --train --iters 1000 --batch-size 16 --lora-layers 12
+
+python3 -m mlx_lm.lora --model models/Qwen1.5-1.8B --data data/ --train --iters 1000 --batch-size 16 --lora-layers 12
 ```
 
 将微调后的 `adapters` 文件与基础模型合并：
