@@ -64,6 +64,8 @@ python3 webui.py
 python3 api.py -s SoVITS_weights/XiaoNingZi_v1_e15_s225.pth -g GPT_weights/XiaoNingZi_v1-e15.ckpt -dr samples/XiaoNingZi/content2.wav -dt "要感谢一键三连的小伙伴们，也要感谢陪我，从几百粉走到现在的老朋友们，谢谢你们。" -dl "zh" -a 127.0.0.1 -p 9881
 
 python3 api.py -s SoVITS_weights/XiaoNingZi_v1_e15_s225.pth -g GPT_weights/XiaoNingZi_v1-e15.ckpt -dr samples/XiaoNingZi/content.wav -dt "好，视频的最后祝大家新年快乐，龙年走大运" -dl "zh" -a 127.0.0.1 -p 9880
+
+python api.py -s SoVITS_weights/yulu_v2_e15_s135.pth -g GPT_weights/yulu_v2-e15.ckpt -dr samples/yuluxu/content.flac -dt "怎么办呢？你就是我的小屁狗。小屁狗啊小屁狗。" -dl "zh" -a 127.0.0.1 -p 9880
 ```
 
 运行问答生成程序：
