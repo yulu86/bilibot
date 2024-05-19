@@ -7,14 +7,14 @@ import simpleaudio as sa
 import ollama
 
 # 主题
-SUBJECT = '你喜欢看什么动漫'
+SUBJECT = ''
 
 # 是否使用OLLMA
 USE_OLLAMA = True
 
 # OLLMA模型
-OLLMA_MODEL1 = 'qwen:32b-chat-v1.5-q4_0_weibo'
-USER1 = 'weibo'
+OLLMA_MODEL1 = 'qwen:32b-chat-v1.5-q4_0_zhihu'
+USER1 = 'zhihu'
 OLLMA_MODEL2 = 'qwen:32b-chat-v1.5-q4_0_bilibot'
 USER2 = 'bilibili'
 
