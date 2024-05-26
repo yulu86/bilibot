@@ -9,7 +9,7 @@ import ollama
 # 是否使用OLLMA
 USE_OLLAMA = True
 # OLLMA模型
-OLLMA_MODEL = 'llama3-70b-chinese_bili:latest'
+OLLMA_MODEL = 'llama3-70b-chinese_weibo:latest'
 # safetensors模型
 SAFETENSORS_MODEL = 'Qwen1.5-32B-Chat-4Bit'
 
