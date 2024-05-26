@@ -9,25 +9,25 @@ import ollama
 # 是否使用OLLMA
 USE_OLLAMA = True
 # OLLMA模型
-OLLMA_MODEL = 'qwen:32b-chat-v1.5-q4_0_stable_weibo'
+OLLMA_MODEL = 'llama3-70b-chinese_bili:latest'
 # safetensors模型
 SAFETENSORS_MODEL = 'Qwen1.5-32B-Chat-4Bit'
 
 def generate_speech(text, port):
     time_ckpt = time.time()
-    data={
-        "text": text,
-        "text_language": "zh"
-    }
-    response = requests.post("http://127.0.0.1:{}".format(port), json=data)
-    if response.status_code == 400:
-        raise Exception(f"GPT-SoVITS ERROR: {response.message}")
-    audio_data = io.BytesIO(response.content)
-    with wave.open(audio_data, 'rb') as wave_read:
-        audio_frames = wave_read.readframes(wave_read.getnframes())
-        audio_wave_obj = sa.WaveObject(audio_frames, wave_read.getnchannels(), wave_read.getsampwidth(), wave_read.getframerate())
-    play_obj = audio_wave_obj.play()
-    play_obj.wait_done()
+    # data={
+    #     "text": text,
+    #     "text_language": "zh"
+    # }
+    # response = requests.post("http://127.0.0.1:{}".format(port), json=data)
+    # if response.status_code == 400:
+    #     raise Exception(f"GPT-SoVITS ERROR: {response.message}")
+    # audio_data = io.BytesIO(response.content)
+    # with wave.open(audio_data, 'rb') as wave_read:
+    #     audio_frames = wave_read.readframes(wave_read.getnframes())
+    #     audio_wave_obj = sa.WaveObject(audio_frames, wave_read.getnchannels(), wave_read.getsampwidth(), wave_read.getframerate())
+    # play_obj = audio_wave_obj.play()
+    # play_obj.wait_done()
     print("Audio Generation Time: %d ms\n" % ((time.time() - time_ckpt) * 1000))
 
 def split_text(text):
