@@ -14,4 +14,5 @@ ollama create qwen:32b-chat-v1.5-q4_0_weibo -f ./Modelfile/Modelfile_qwen1.5-32B
 
 ollama create llama3-70b-chinese_bili -f ./Modelfile/Modelfile_llama3-70b-chinese-chat_bili
 ollama create llama3-70b-chinese_weibo -f ./Modelfile/Modelfile_llama3-70b-chinese-chat_weibo
+ollama create llama3-70b-chinese-instruct_coder -f ./Modelfile/Modelfile_llama3-70b-chinese-instruct_coder
 ```
