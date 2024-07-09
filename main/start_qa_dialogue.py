@@ -12,7 +12,7 @@ from mlx_lm import load, generate
 # 是否使用OLLMA
 USE_OLLAMA = True
 # OLLMA模型
-OLLMA_MODEL = 'qwen:32b-chat-v1.5-q4_0_bilibot'
+OLLMA_MODEL = 'qwen:32b-chat-v1.5-q4_0'
 # safetensors模型
 SAFETENSORS_MODEL = 'Qwen1.5-32B-Chat-4Bit'
 
